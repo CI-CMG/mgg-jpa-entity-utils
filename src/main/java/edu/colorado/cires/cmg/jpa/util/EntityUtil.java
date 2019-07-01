@@ -70,7 +70,8 @@ public final class EntityUtil {
     if (obj == null) {
       return false;
     }
-    if (thisEntity.getClass() != obj.getClass()) {
+
+    if (!thisEntity.getClass().isInstance(obj)) {
       return false;
     }
     EntityWithId<?> other = (EntityWithId) obj;
