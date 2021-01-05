@@ -12,9 +12,9 @@ public final class EntityUtil {
   /**
    * Deprecated. Use @{link {@link #addAndParent(Object, Collection, EntityWithId, Consumer, Consumer)}}
    *
-   * @param parent
-   * @param parents
-   * @param <T>
+   * @param parent the parent
+   * @param parents the parents
+   * @param <T> the type
    */
   @Deprecated
   public static <T extends EntityWithId<?>> void addParent(
@@ -26,12 +26,12 @@ public final class EntityUtil {
   /**
    * Deprecated. Use @{link {@link #addAndParent(Object, Collection, EntityWithId, Consumer, Consumer)}}
    *
-   * @param thisEntity
-   * @param childEntity
-   * @param setChild
-   * @param setParent
-   * @param <T>
-   * @param <C>
+   * @param thisEntity the entity
+   * @param childEntity the child
+   * @param setChild set child method
+   * @param setParent set parent method
+   * @param <T> the parent type
+   * @param <C> the child type
    */
   @Deprecated
   public static <T, C extends EntityWithId<?>> void addAndParent(
