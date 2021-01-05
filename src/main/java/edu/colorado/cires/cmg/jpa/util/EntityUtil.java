@@ -99,7 +99,7 @@ public final class EntityUtil {
     Iterator<C> it = childEntities.iterator();
     while (it.hasNext()) {
       C c = it.next();
-      if(childEntity.equals(it)) {
+      if(childEntity.equals(c)) {
         it.remove();
       }
     }
