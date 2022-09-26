@@ -16,28 +16,6 @@ Add the following dependency to your Maven pom.xml
     </dependency>
 ```
 
-## Usage
-
-The minimal way to create a S3OutputStream is as follows:
-```java
-MultipartUploadRequest request = MultipartUploadRequest.builder().bucket(bucketName).key(key).build();
-OutputStream out = S3OutputStream.builder().s3(s3).uploadRequest(request).build();
-```
-
-Where in the above example s3 is an instance of S3ClientMultipartUpload (described below), bucketName is the name of
-a S3 bucket, and key is the key that will be uploaded to in the bucket.
-
-Here is how to create a S3OutputStream with all the available options:
-```java
-OutputStream out = S3OutputStream.builder()
-    .s3(s3)
-    .uploadRequest(MultipartUploadRequest.builder().bucket(bucketName).key(key).build())
-    .partSizeMib(partSizeMib)
-    .uploadQueueSize(queueSize)
-    .autoComplete(true)
-    .build();
-```
-
 ### EntityWithId
 The EntityWithId interface requires is used throughout this library.  JPA entities should implement this interface, which defines the primary key
 for the entity.
