@@ -139,7 +139,7 @@
           <releaseProfiles>release,site-publish</releaseProfiles>
           <goals>deploy site</goals>
           <tagNameFormat>v@{project.version}</tagNameFormat>
-          <arguments>-Pdep-check -D${sign.serverId}</arguments>
+          <arguments>-Pdep-check</arguments>
         </configuration>
       </plugin>
 
