@@ -1,6 +1,8 @@
 package edu.colorado.cires.cmg.jpa.model;
 
-public interface EntityWithId<I> {
+import java.io.Serializable;
+
+public interface EntityWithId<I extends Serializable> {
 
   I getId();
 
