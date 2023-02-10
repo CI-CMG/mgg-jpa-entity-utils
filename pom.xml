@@ -199,7 +199,7 @@
             <configuration>
               <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
               <suppressionFiles>
-<!--                <suppressionFile>${project.basedir}/owasp-dep-check-suppression.xml</suppressionFile>-->
+                <suppressionFile>${project.basedir}/owasp-dep-check-suppression.xml</suppressionFile>
               </suppressionFiles>
             </configuration>
             <executions>
