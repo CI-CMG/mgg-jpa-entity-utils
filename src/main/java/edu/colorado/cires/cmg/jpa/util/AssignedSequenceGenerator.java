@@ -19,6 +19,9 @@ public class AssignedSequenceGenerator extends SequenceStyleGenerator {
         return id;
       }
     }
-    return super.generate(s, obj);
+//    return super.generate(s, obj);
+
+    // https://hibernate.atlassian.net/browse/HHH-16692?focusedCommentId=113950
+    return super.generatedOnExecution(obj, s);
   }
 }
