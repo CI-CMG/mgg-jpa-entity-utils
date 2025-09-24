@@ -47,6 +47,9 @@
     <sign.serverId>gpg-sign</sign.serverId>
     <javadoc.version>3.3.1</javadoc.version>
     <jacoco.version>0.8.7</jacoco.version>
+    <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
+    <ossIndexUsername>${env.OSS_INDEX_USERNAME}</ossIndexUsername>
+    <ossIndexPassword>${env.OSS_INDEX_PASSWORD}</ossIndexPassword>
   </properties>
 
   <reporting>
@@ -127,7 +130,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.8</version>
+        <version>1.7.0</version>
         <extensions>true</extensions>
         <configuration>
           <serverId>ossrh</serverId>
