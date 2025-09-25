@@ -7,4 +7,12 @@
     <packageUrl regex="true">^pkg:maven/com\.sun\.istack/istack\-commons\-runtime@.*$</packageUrl>
     <cve>CVE-2021-37533</cve>
   </suppress>
+  <suppress>
+    <notes><![CDATA[
+   file name: angus-activation-2.0.1.jar
+   mitigation: pinned to latest, no smtp usage in project
+   ]]></notes>
+    <packageUrl regex="true">^pkg:maven/org\.eclipse\.angus/angus-activation@.*$</packageUrl>
+    <cve>CVE-2025-7962</cve>
+  </suppress>
 </suppressions>
