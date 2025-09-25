@@ -37,12 +37,13 @@
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <sign.serverId>gpg-sign</sign.serverId>
     <javadoc.version>3.3.1</javadoc.version>
     <jacoco.version>0.8.7</jacoco.version>
     <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
     <ossIndexUsername>${env.OSS_INDEX_USERNAME}</ossIndexUsername>
     <ossIndexPassword>${env.OSS_INDEX_PASSWORD}</ossIndexPassword>
+    <git.username />
+    <git.password />
   </properties>
 
   <reporting>
@@ -141,7 +142,9 @@
           <releaseProfiles>release,site-publish</releaseProfiles>
           <goals>deploy site</goals>
           <tagNameFormat>v@{project.version}</tagNameFormat>
-          <arguments>-Pdep-check</arguments>
+          <arguments>-Dgit.username=${git.username} -Dgit.password=${git.password}</arguments>
+          <username>${git.username}</username>
+          <password>${git.password}</password>
         </configuration>
       </plugin>
 
@@ -212,6 +215,9 @@
 
     <profile>
       <id>release</id>
+      <properties>
+        <sign.skipNoKey>false</sign.skipNoKey>
+      </properties>
       <build>
         <plugins>
           <plugin>
@@ -332,45 +338,45 @@
                   <target>
                     <delete dir="${project.build.directory}/project-documentation" quiet="true" />
                     <exec dir="${project.build.directory}" executable="git">
-                      <arg value="clone" />
-                      <arg value="--depth=1" />
-                      <arg value="git@github.com:CI-CMG/project-documentation.git" />
+                      <arg value="clone"/>
+                      <arg value="--depth=1"/>
+                      <arg value="https://${git.username}:CI-CMG/project-documentation.git"/>
                     </exec>
                     <exec dir="${project.build.directory}/project-documentation" executable="git">
-                      <arg value="remote" />
-                      <arg value="add" />
-                      <arg value="javadoc" />
-                      <arg value="git@github.com:CI-CMG/project-documentation.git" />
+                      <arg value="remote"/>
+                      <arg value="add"/>
+                      <arg value="javadoc"/>
+                      <arg value="https://${git.username}:CI-CMG/project-documentation.git"/>
                     </exec>
                     <exec dir="${project.build.directory}/project-documentation" executable="git" failonerror="false">
-                      <arg value="rm" />
-                      <arg value="-r" />
+                      <arg value="rm"/>
+                      <arg value="-r"/>
                       <arg value="${git.remote.origin.url.suffix}/${project.version}" />
                     </exec>
                     <mkdir dir="${project.build.directory}/project-documentation/${git.remote.origin.url.suffix}" />
                     <copy todir="${project.build.directory}/project-documentation/${git.remote.origin.url.suffix}">
-                      <fileset file="${project.build.directory}/site-resources/index.html" />
+                      <fileset file="${project.build.directory}/site-resources/index.html"/>
                     </copy>
                     <copy todir="${project.build.directory}/project-documentation/${git.remote.origin.url.suffix}/${project.version}">
-                      <fileset dir="${project.build.directory}/site" />
+                      <fileset dir="${project.build.directory}/site"/>
                     </copy>
                     <exec dir="${project.build.directory}/project-documentation" executable="git">
-                      <arg value="add" />
-                      <arg value="${git.remote.origin.url.suffix}/index.html" />
+                      <arg value="add"/>
+                      <arg value="${git.remote.origin.url.suffix}/index.html"/>
                     </exec>
                     <exec dir="${project.build.directory}/project-documentation" executable="git">
-                      <arg value="add" />
-                      <arg value="${git.remote.origin.url.suffix}/${project.version}" />
+                      <arg value="add"/>
+                      <arg value="${git.remote.origin.url.suffix}/${project.version}"/>
                     </exec>
                     <exec dir="${project.build.directory}/project-documentation" executable="git">
-                      <arg value="commit" />
-                      <arg value="-m" />
-                      <arg value="Update Documentation: ${git.remote.origin.url.suffix}/${project.version}" />
+                      <arg value="commit"/>
+                      <arg value="-m"/>
+                      <arg value="Update Documentation: ${git.remote.origin.url.suffix}/${project.version}"/>
                     </exec>
                     <exec dir="${project.build.directory}/project-documentation" executable="git">
-                      <arg value="push" />
-                      <arg value="javadoc" />
-                      <arg value="trunk" />
+                      <arg value="push"/>
+                      <arg value="javadoc"/>
+                      <arg value="trunk"/>
                     </exec>
                   </target>
                 </configuration>
