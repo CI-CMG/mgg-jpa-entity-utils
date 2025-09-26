@@ -240,6 +240,7 @@
             <artifactId>dependency-check-maven</artifactId>
             <configuration>
               <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
+              <skipProvidedScope>true</skipProvidedScope>
               <suppressionFiles>
                 <suppressionFile>${project.basedir}/owasp-dep-check-suppression.xml</suppressionFile>
               </suppressionFiles>
