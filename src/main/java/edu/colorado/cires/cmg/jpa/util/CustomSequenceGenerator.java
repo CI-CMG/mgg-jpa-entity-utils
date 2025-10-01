@@ -8,6 +8,7 @@ import org.hibernate.id.enhanced.SequenceStyleGenerator;
 
 import java.io.Serializable;
 
+@Deprecated(forRemoval = true)
 public class CustomSequenceGenerator extends SequenceStyleGenerator {
     @Override
     public Serializable generate(SharedSessionContractImplementor session, Object owner) throws HibernateException {
