@@ -6,5 +6,15 @@
       <username>${env.MAVEN_USERNAME}</username>
       <password>${env.MAVEN_PASSWORD}</password>
     </server>
+    <server>
+      <id>artifactory-release</id>
+      <username>${env.ARTIFACTORY_API_USERNAME}</username>
+      <password>${env.ARTIFACTORY_API_KEY}</password>
+    </server>
+    <server>
+      <id>artifactory-snapshot</id>
+      <username>${env.ARTIFACTORY_API_USERNAME}</username>
+      <password>${env.ARTIFACTORY_API_KEY}</password>
+    </server>
   </servers>
 </settings>
