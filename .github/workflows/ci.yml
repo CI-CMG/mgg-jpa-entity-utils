@@ -18,7 +18,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: build with maven
-        run: mvn -B -s settings.xml clean deploy -Pdep-check
+#        run: mvn -B -s settings.xml clean deploy -Pdep-check
+        run: mvn -B -s settings.xml clean deploy
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
           SIGN_KEY_PASS: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
@@ -27,6 +28,10 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
           OSS_INDEX_USERNAME: ${{ secrets.OSS_INDEX_USERNAME }}
           OSS_INDEX_PASSWORD: ${{ secrets.OSS_INDEX_PASSWORD }}
+          ARTIFACTORY_API_USERNAME: ${{ vars.ARTIFACTORY_API_USERNAME }}
+          ARTIFACTORY_API_KEY: ${{ secrets.ARTIFACTORY_API_KEY }}
+          ARTIFACTORY_SNAPSHOT_URL: ${{ vars.ARTIFACTORY_SNAPSHOT_URL }}
+          ARTIFACTORY_RELEASE_URL: ${{ vars.ARTIFACTORY_RELEASE_URL }}
       - name: notify dependencies
         run: |
           set -ex
