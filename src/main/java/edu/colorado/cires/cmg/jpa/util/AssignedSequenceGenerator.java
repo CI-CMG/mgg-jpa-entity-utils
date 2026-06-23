@@ -6,9 +6,8 @@ import java.io.Serializable;
 import java.util.Properties;
 import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.generator.GeneratorCreationContext;
 import org.hibernate.id.enhanced.SequenceStyleGenerator;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.type.Type;
 
 public class AssignedSequenceGenerator extends SequenceStyleGenerator {
 
@@ -20,12 +19,11 @@ public class AssignedSequenceGenerator extends SequenceStyleGenerator {
     incrementSize = config.incrementSize();
   }
 
-
   @Override
-  public void configure(Type type, Properties parameters, ServiceRegistry serviceRegistry) throws MappingException {
+  public void configure(GeneratorCreationContext creationContext, Properties parameters) throws MappingException {
     parameters.put(SEQUENCE_PARAM, sequenceName);
     parameters.put(INCREMENT_PARAM, incrementSize);
-    super.configure(type, parameters, serviceRegistry);
+    super.configure(creationContext, parameters);
   }
 
   @Override
