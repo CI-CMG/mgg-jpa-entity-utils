@@ -253,6 +253,7 @@
               <suppressionFiles>
                 <suppressionFile>${project.basedir}/owasp-dep-check-suppression.xml</suppressionFile>
               </suppressionFiles>
+              <nvdDatafeedUrl>https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-{0}.json.gz</nvdDatafeedUrl>
             </configuration>
             <executions>
               <execution>
